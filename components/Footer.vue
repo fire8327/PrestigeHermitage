@@ -1,7 +1,7 @@
 <template>
-    <footer class="mb-8 grid-container text-lg">
+    <footer class="text-lg">
         <div class="flex flex-col gap-4 bg-white rounded-2xl p-4">
-            <div class="flex max-lg:flex-col items-center lg:justify-between gap-6">
+            <div class="flex max-lg:flex-col items-center lg:justify-between gap-6 container mx-auto">
                 <NuxtLink to="/">
                     <img src="/images/header/logo.png" alt="" class="w-40">
                 </NuxtLink>
@@ -27,7 +27,6 @@
                     </div>
                 </div>    
             </div>
-            <div class="w-full h-px bg-gray-400"></div>
             <p class="text-gray-400 text-center text-base">@ Prestige Hermitage, 2024</p>
         </div>
     </footer>

@@ -1,5 +1,5 @@
 <template>
-    <div class="flex flex-col gap-6 p-4 bg-white rounded-xl">
+    <div class="flex flex-col gap-6 bg-white rounded-xl p-4 border border-gray-400/60">
         <p class="text-2xl font-semibold font-Nunito tracking-widest">Связаться с нами</p>
         <div class="flex flex-col gap-4 items-center">
             <p class="text-gray-400 text-center max-w-2xl text-base">Если у вас есть вопросы, вы хотите оставить отзыв, пожалуйста оставьте свои контакты. Мы обязательно свяжемся с вами в ближайшее время!</p>
