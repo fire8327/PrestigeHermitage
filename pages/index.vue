@@ -125,7 +125,26 @@
         </div>
     </div>
     <OurTeam></OurTeam>
-    <Services></Services>
+    <div class="flex flex-col gap-6">
+       <p class="text-2xl font-semibold font-Nunito tracking-widest">Услуги</p>
+       <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4">
+                <Icon class="text-5xl text-[#12B1DE]" name="carbon:web-services-definition"/>
+                <p>Юридические услуги</p>
+                <NuxtLink to="/services" class="underline text-gray-400 transition-all duration-500 hover:text-[#292929]">Подробнее</NuxtLink>
+            </div>
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4">
+                <Icon class="text-5xl text-[#12B1DE]" name="ph:building-apartment-light"/>
+                <p>Ипотека</p>
+                <NuxtLink to="/services" class="underline text-gray-400 transition-all duration-500 hover:text-[#292929]">Подробнее</NuxtLink>
+            </div>
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4">
+                <Icon class="text-5xl text-[#12B1DE]" name="teenyicons:cost-estimate-outline"/>
+                <p>Оценка недвижимости</p>
+                <NuxtLink to="/services" class="underline text-gray-400 transition-all duration-500 hover:text-[#292929]">Подробнее</NuxtLink>
+            </div>
+       </div>
+    </div>
     <div class="flex flex-col gap-6">
         <p class="text-2xl font-semibold font-Nunito tracking-widest">Этапы покупки</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
