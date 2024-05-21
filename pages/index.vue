@@ -1,78 +1,24 @@
 <template>
-    <Services></Services>
-    <div class="flex flex-col gap-6">
-        <p class="text-2xl">Этапы покупки</p>
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
-                <p class="text-2xl"><span class="text-[#12B1DE]">01. </span>Выбор недвижимости</p>
-                <div class="flex flex-col">
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Недвижимость для любых целей</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>От надёжных застройщиков</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Служба индивидуальных показов</span>
-                    </p>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
-                <p class="text-2xl"><span class="text-[#12B1DE]">02. </span>Подготовка к сделке</p>
-                <div class="flex flex-col">
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Помощь в оформлении страхования</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Проверка документов</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Юридическая поддержка</span>
-                    </p>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
-                <p class="text-2xl"><span class="text-[#12B1DE]">03. </span>Сделка</p>
-                <div class="flex flex-col">
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Организация проведения сделки</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Присутствие менеджера на всех этапах сделки</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Курьерская служба</span>
-                    </p>
-                </div>
-            </div>
-            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
-                <p class="text-2xl"><span class="text-[#12B1DE]">04. </span>ПОСТ-сопровождение</p>
-                <div class="flex flex-col">
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Контроль качества квартиры</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Информационная поддержка</span>
-                    </p>
-                    <p class="flex items-center gap-2">
-                        <span>—</span>
-                        <span>Помощь в продлении страховки</span>
-                    </p>
-                </div>
-            </div>
-        </div>
-    </div>
+    <Swiper :space-between="20" :loop="true" :modules="[SwiperAutoplay, SwiperPagination]" :autoplay="{delay: 3500}" :pagination="{clickable: true}" :slidesPerView="1" class="w-full">
+        <SwiperSlide class="w-full">
+            <img src="/images/hero/1.jpg" alt="" class="w-full rounded-xl aspect-video">
+        </SwiperSlide>
+        <SwiperSlide class="w-full">
+            <img src="/images/hero/2.jpg" alt="" class="w-full rounded-xl aspect-video">
+        </SwiperSlide>
+        <SwiperSlide class="w-full">
+            <img src="/images/hero/3.jpg" alt="" class="w-full rounded-xl aspect-video">
+        </SwiperSlide>
+        <SwiperSlide class="w-full">
+            <img src="/images/hero/4.jpg" alt="" class="w-full rounded-xl aspect-video">
+        </SwiperSlide>
+        <SwiperSlide class="w-full">
+            <img src="/images/hero/5.jpg" alt="" class="w-full rounded-xl aspect-video">
+        </SwiperSlide>
+        <SwiperSlide class="w-full">
+            <img src="/images/hero/6.jpg" alt="" class="w-full rounded-xl aspect-video">
+        </SwiperSlide>    
+    </Swiper>
     <div class="flex flex-col gap-6">
         <p class="text-2xl">Преимущества</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -174,6 +120,80 @@
                             <p>Помогаем на протяжении всего срока</p>
                         </div>
                     </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <Services></Services>
+    <div class="flex flex-col gap-6">
+        <p class="text-2xl">Этапы покупки</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
+                <p class="text-2xl"><span class="text-[#12B1DE]">01. </span>Выбор недвижимости</p>
+                <div class="flex flex-col">
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Недвижимость для любых целей</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>От надёжных застройщиков</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Служба индивидуальных показов</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
+                <p class="text-2xl"><span class="text-[#12B1DE]">02. </span>Подготовка к сделке</p>
+                <div class="flex flex-col">
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Помощь в оформлении страхования</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Проверка документов</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Юридическая поддержка</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
+                <p class="text-2xl"><span class="text-[#12B1DE]">03. </span>Сделка</p>
+                <div class="flex flex-col">
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Организация проведения сделки</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Присутствие менеджера на всех этапах сделки</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Курьерская служба</span>
+                    </p>
+                </div>
+            </div>
+            <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
+                <p class="text-2xl"><span class="text-[#12B1DE]">04. </span>ПОСТ-сопровождение</p>
+                <div class="flex flex-col">
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Контроль качества квартиры</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Информационная поддержка</span>
+                    </p>
+                    <p class="flex items-center gap-2">
+                        <span>—</span>
+                        <span>Помощь в продлении страховки</span>
+                    </p>
                 </div>
             </div>
         </div>
