@@ -6,5 +6,11 @@ export default defineNuxtConfig({
     "@nuxtjs/google-fonts",
     "nuxt-icon",
     "nuxt-swiper"
-  ]
+  ],
+  googleFonts: {
+    families: {
+      'Open Sans': true,
+      'Nunito': true
+    }
+  }
 })

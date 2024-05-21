@@ -20,7 +20,7 @@
         </SwiperSlide>    
     </Swiper>
     <div class="flex flex-col gap-6">
-        <p class="text-2xl font-semibold">Преимущества</p>
+        <p class="text-2xl font-semibold font-Nunito tracking-widest">Преимущества</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="flex flex-col gap-8">
                 <div class="rounded-xl bg-white flex flex-col px-8 py-6">
@@ -127,7 +127,7 @@
     <OurTeam></OurTeam>
     <Services></Services>
     <div class="flex flex-col gap-6">
-        <p class="text-2xl font-semibold">Этапы покупки</p>
+        <p class="text-2xl font-semibold font-Nunito tracking-widest">Этапы покупки</p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
             <div class="flex flex-col gap-4 rounded-xl bg-white p-4 md:pb-10">
                 <p class="text-2xl"><span class="text-[#12B1DE]">01. </span>Выбор недвижимости</p>

@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-6">
-       <p class="text-2xl font-semibold">Услуги</p>
+       <p class="text-2xl font-semibold font-Nunito tracking-widest">Услуги</p>
        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
             <div class="flex flex-col gap-4 rounded-xl bg-white p-4">
                 <Icon class="text-5xl text-[#12B1DE]" name="carbon:web-services-definition"/>

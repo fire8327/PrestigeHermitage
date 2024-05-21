@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col gap-6">
-       <p class="text-2xl font-semibold">Наша команда</p>
+       <p class="text-2xl font-semibold font-Nunito tracking-widest">Наша команда</p>
         <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
             <div class="flex flex-col">
                 <img src="/public/images/team/1.jpeg" alt="" class="rounded-xl">
