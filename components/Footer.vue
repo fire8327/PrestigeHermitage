@@ -1,0 +1,38 @@
+<template>
+    <footer class="mb-8 grid-container text-lg">
+        <div class="flex flex-col gap-4 bg-white rounded-2xl p-4">
+            <div class="flex max-lg:flex-col items-center lg:justify-between gap-6">
+                <NuxtLink to="/">
+                    <img src="/images/header/logo.png" alt="" class="w-40">
+                </NuxtLink>
+                <div class="flex max-md:flex-col items-center gap-6">
+                    <div class="flex flex-col">
+                        <p class="text-gray-400 text-sm">Email</p>
+                        <NuxtLink to="mailto:example@gmail.com" class="text-xl font-Nunito font-semibold transition-all duration-500 hover:text-[#12B1DE]">example@gmail.com</NuxtLink>
+                    </div>
+                    <div class="flex flex-col">
+                        <p class="text-gray-400 text-sm">Телефон</p>
+                        <NuxtLink to="tel:+7 495 126-16-38" class="text-xl font-Nunito font-semibold transition-all duration-500 hover:text-[#12B1DE]">+7 495 126-16-38</NuxtLink>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <NuxtLink class="transition-all duration-500 hover:text-[#12B1DE]">
+                            <Icon class="text-3xl" name="mdi:vk"/>
+                        </NuxtLink>
+                        <NuxtLink class="transition-all duration-500 hover:text-[#12B1DE]">
+                            <Icon class="text-3xl" name="ic:baseline-telegram"/>
+                        </NuxtLink>
+                        <NuxtLink class="transition-all duration-500 hover:text-[#12B1DE]">
+                            <Icon class="text-3xl" name="basil:instagram-outline"/>
+                        </NuxtLink>
+                    </div>
+                </div>    
+            </div>
+            <div class="w-full h-px bg-gray-400"></div>
+            <p class="text-gray-400 text-center text-base">@ Prestige Hermitage, 2024</p>
+        </div>
+    </footer>
+</template>
+
+<script setup>
+
+</script>
