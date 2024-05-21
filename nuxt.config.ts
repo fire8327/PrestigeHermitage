@@ -5,12 +5,19 @@ export default defineNuxtConfig({
     "@nuxtjs/tailwindcss",
     "@nuxtjs/google-fonts",
     "nuxt-icon",
-    "nuxt-swiper"
+    "nuxt-swiper",
+    "@formkit/nuxt",
+    "@pinia/nuxt"
   ],
   googleFonts: {
     families: {
       'Open Sans': true,
       'Nunito': true
+    }
+  },
+  postcss: {
+    plugins: {
+      cssnano: false 
     }
   }
 })

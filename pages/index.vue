@@ -199,6 +199,7 @@
             </div>
         </div>
     </div>
+    <Feedback></Feedback>
 </template>
 
 <script setup>
