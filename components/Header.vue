@@ -12,7 +12,7 @@
                 </NuxtLink>
                 <nav class="flex items-center gap-6 text-lg">
                     <NuxtLink class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Поис квартир</NuxtLink>
-                    <NuxtLink class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Новости</NuxtLink>
+                    <NuxtLink to="/news" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Новости</NuxtLink>
                     <NuxtLink to="/services" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Услуги</NuxtLink>
                     <NuxtLink to="/FAQ" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">FAQ</NuxtLink>
                     <NuxtLink to="/contacts" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Контакты</NuxtLink>
