@@ -10,6 +10,7 @@
             <FormKit type="text" v-model="user.login" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Логин" outer-class="w-full lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Логин"/>
             <FormKit type="password" v-model="user.password" validation="required|length:6" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Пароль" outer-class="w-full lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="••••••"/>
         </div>
+        <FormKit type="text" v-model="user.phone" validation="required|length:11" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Телефон" outer-class="w-full lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Телефон"/>
         <FormKit @change="loadImage" type="file" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Аватар" outer-class="w-full md:w-2/3 lg:w-1/2" accept=".png,.jpg,.jpeg,.svg,.webp,.bmp" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" help-class="text-gray-400 text-sm" help="*Аватар"/>
         <button type="submit" class="w-[160px] text-center py-0.5 px-4 rounded-full bg-[#12B1DE] border border-[#12B1DE] text-white transition-all duration-500 hover:text-[#12B1DE] hover:bg-transparent">Регистрация</button>
         <div class="flex items-center justify-center gap-4 w-full md:w-2/3 lg:w-1/2 my-10">
@@ -28,6 +29,7 @@
         surname: "",
         patronymic: "",
         login: "",
+        phone: "",
         password: ""
     })
 
@@ -67,7 +69,7 @@
             patronymic: user.value.patronymic, 
             login: user.value.login, 
             password: user.value.password, 
-            role: user.value.role
+            phone: user.value.phone
         }
 
         if (files && files.length > 0) {
