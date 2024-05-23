@@ -7,13 +7,17 @@ export default defineNuxtConfig({
     "nuxt-icon",
     "nuxt-swiper",
     "@formkit/nuxt",
-    "@pinia/nuxt"
+    "@pinia/nuxt",
+    "@nuxtjs/supabase"
   ],
   googleFonts: {
     families: {
       'Open Sans': true,
       'Nunito': true
     }
+  },
+  supabase: {
+    redirect: false
   },
   postcss: {
     plugins: {
