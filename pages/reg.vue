@@ -61,23 +61,29 @@
             return showMessage("Такой  логин уже используется!", false)              
         } 
 
-        if(files && files.length>0) {
-            await supabase.storage.from('users').upload(`avatars/${files[0].name}`, files[0])
-        }
-
-        let unsertUser = { 
+        let insertUser = { 
             name: user.value.name,
             surname: user.value.surname,
             patronymic: user.value.patronymic, 
             login: user.value.login, 
             password: user.value.password, 
-            role: user.value.role,
-            avatar: `avatars/${files[0].name}`
+            role: user.value.role
+        }
+
+        if (files && files.length > 0) {
+            const { data: uploadData, error: uploadError } = await supabase.storage.from('users').upload(`avatars/${files[0].name}`, files[0])          
+
+            console.log(uploadData)
+            if (uploadError) {
+                return showMessage('Произошла ошибка!', false)
+            }
+
+            insertUser.avatar = `avatars/${files[0].name}`
         }
 
         const { data, error } = await supabase
         .from('users')
-        .insert(unsertUser)
+        .insert(insertUser)
         .select()
 
         if (data) {
