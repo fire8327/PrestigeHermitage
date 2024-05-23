@@ -73,7 +73,6 @@
         if (files && files.length > 0) {
             const { data: uploadData, error: uploadError } = await supabase.storage.from('users').upload(`avatars/${files[0].name}`, files[0])          
 
-            console.log(uploadData)
             if (uploadError) {
                 return showMessage('Произошла ошибка!', false)
             }
