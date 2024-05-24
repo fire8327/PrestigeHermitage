@@ -3,7 +3,7 @@
         <div class="flex flex-col gap-4">
             <div class="flex items-center justify-between">
                 <NuxtLink to="/about" class="text-gray-400 text-base transition-all duration-500 hover:text-[#292929]">О компании</NuxtLink>
-                <NuxtLink to="tel:+7 495 126-16-38" class="text-xl font-Nunito font-semibold">+7 495 126-16-38</NuxtLink>
+                <NuxtLink to="tel:8 911-976-05-22" class="font-Nunito font-semibold transition-all duration-500 hover:text-[#12B1DE]">8 911-976-05-22</NuxtLink>
             </div>
             <div class="w-full h-px bg-gray-400"></div>
             <div class="flex items-center justify-between">
