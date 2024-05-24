@@ -54,6 +54,6 @@
         userStore.authenticated = true
         userStore.id = users[0].id
         userStore.role = users[0].role
-        router.push('/')
+        router.push('/profile')
     } 
 </script>
