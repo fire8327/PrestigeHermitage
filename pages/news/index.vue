@@ -37,7 +37,7 @@
     })
 
     const copyUrl = async (link) => {
-        await navigator.clipboard.writeText(`${fullUrl.value}/${link}`)
+        await navigator.clipboard.writeText(`${fullUrl.value}${link}`)
         return showMessage("Скопировано!", true)
     }
 </script>
