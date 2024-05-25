@@ -6,7 +6,7 @@
 </template>
 
 <script setup>
-    /* подключение БД и проверка пользователя */
+    /* подключение БД */
     const supabase = useSupabaseClient() 
 
     const { data:flats, error } = await supabase

@@ -36,19 +36,10 @@
                     <div v-else class="p-4 rounded-full bg-gray-200 flex items-center justify-center border border-gray-400 text-[#12B1DE] w-fit">
                         <Icon class="text-3xl" name="material-symbols:person"/>
                     </div>
-                    <div class="flex flex-col gap-2">
+                    <div class="flex flex-col">
                         <p class="text-xs text-gray-400">СОБСТВЕННИК</p>
                         <p class="text-xl">ID {{ props.users.id }}</p>
-                    </div>
-                    <!-- <button type="button" @click="isPhoneShow = true" v-if="!isPhoneShow" class="w-full py-2 rounded-xl font-semibold text-lg text-white bg-[#12B1DE]">Показать телефон</button>
-                    <div v-else class="flex flex-col gap-2">
-                        <NuxtLink :to="`tel:props.users.phone`" class="text-base">{{ props.users.phone }}</NuxtLink>
-                        <p class="text-sm text-gray-400">
-                            Не вносите предоплату
-                            до просмотра объекта
-                            и заключения договора!
-                        </p>
-                    </div> -->
+                    </div>                    
                 </div>
             </NuxtLink>
             <div class="flex items-center gap-2 self-end absolute z-[2] top-8 right-8 xl:right-4 xl:top-4">
@@ -65,10 +56,6 @@
 </template>
 
 <script setup>
-    /* показ номера телефона */
-    const isPhoneShow = ref(false)
-
-
     /* пропсы */
     const props = defineProps({
         id: Number,
