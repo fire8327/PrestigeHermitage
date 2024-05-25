@@ -2,7 +2,7 @@
     <div class="flex max-lg:flex-col gap-6">
         <div class="flex flex-col gap-6 lg:w-2/3">
             <NuxtLink to="/catalog" class="flex items-center gap-2 text-[#12B1DE] transition-all duration-300 hover:opacity-50">
-                <span class="font-semibold font-Nunito tracking-widest">Назад</span>
+                <span class="font-semibold font-Nunito tracking-widest">Каталог</span>
                 <Icon class="text-3xl" name="ri:arrow-go-back-fill"/>
             </NuxtLink>
             <p class="text-2xl font-semibold font-Nunito tracking-widest">Сдаётся {{ flats[0].rooms }}-комн. квартира, {{ flats[0].totalArea }}м²</p>

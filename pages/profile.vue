@@ -47,6 +47,63 @@
             <button type="submit" class="w-[160px] text-center py-0.5 px-4 rounded-full bg-[#12B1DE] border border-[#12B1DE] text-white transition-all duration-500 hover:text-[#12B1DE] hover:bg-transparent">Добавить</button>
         </FormKit>
     </div>
+    <div class="flex flex-col gap-6" v-if="favouritesFlats && favouritesFlats.length>0">
+        <p class="text-2xl font-semibold font-Nunito tracking-widest">Избранная недвижимость</p>
+        <div class="flex flex-col gap-6" v-for="flat in favouritesFlats">
+            <div class="relative">
+                <NuxtLink :to="`/catalog/flat-${flat.flats.id}`" class="grid grid-cols-5 gap-6 p-4 rounded-xl transition-all duration-500 hover:bg-white hover:shadow-[0px_0px_13px_-7px_black] w-full">
+                    <img :src="`https://odsofactmcvehjzaoqqk.supabase.co/storage/v1/object/public/flats/${flat.flats.images[0]}`" alt="" class="col-span-5 xl:col-span-2 rounded-xl w-full aspect-video object-cover">
+                    <div class="flex flex-col gap-4 col-span-5 md:col-span-3 xl:col-span-2">
+                        <p class="text-xl font-semibold font-Nunito tracking-widest">{{ flat.flats.rooms }}-комн. квартира, {{ flat.flats.totalArea }} м², {{ flat.flats.floorNumber }}/{{ flat.flats.floorQuantity }} этаж</p>
+                        <p class="text-gray-500 text-sm">{{ flat.flats.address }}</p>
+                        <p class="text-2xl">{{ flat.flats.price.toLocaleString() }} ₽/мес.</p>
+                        <div class="flex flex-col gap-2 w-full text-base">
+                            <div class="flex items-center gap-2">
+                                <p>Оплата ЖКХ</p>
+                                <div class="border-b border-dotted border-gray-400 grow h-px"></div>
+                                <p>{{ flat.flats.HCS }}</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <p>Залог</p>
+                                <div class="border-b border-dotted border-gray-400 grow h-px"></div>
+                                <p>{{ Math.round(flat.flats.price/5).toLocaleString() }} ₽</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <p>Предоплата</p>
+                                <div class="border-b border-dotted border-gray-400 grow h-px"></div>
+                                <p>{{ flat.flats.prepayment }}</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <p>Срок аренды</p>
+                                <div class="border-b border-dotted border-gray-400 grow h-px"></div>
+                                <p>{{ flat.flats.rentalPeriod }}</p>
+                            </div>
+                        </div>
+                        <p class="text-sm mt-auto">{{ flat.flats.desc }}</p>
+                    </div>
+                    <div class="flex flex-col gap-4 col-span-5 md:col-span-2 xl:col-span-1 md:ml-6">               
+                        <img v-if="flat.users.avatar" :src="`https://odsofactmcvehjzaoqqk.supabase.co/storage/v1/object/public/users/${flat.users.avatar}`" alt="" class="rounded-full w-16 h-16">
+                        <div v-else class="p-4 rounded-full bg-gray-200 flex items-center justify-center border border-gray-400 text-[#12B1DE] w-fit">
+                            <Icon class="text-3xl" name="material-symbols:person"/>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-xs text-gray-400">СОБСТВЕННИК</p>
+                            <p class="text-xl">ID {{ flat.users.id }}</p>
+                        </div>                    
+                    </div>
+                </NuxtLink>
+                <div class="flex items-center gap-2 self-end absolute z-[2] top-8 right-8 xl:right-4 xl:top-4">
+                    <button @click="removeFavourite(flat.id, favouritesFlats.indexOf(flat))" class="p-2 flex items-center justify-center rounded-full bg-gray-200 transition-all duration-500 text-red-500">
+                        <Icon class="text-2xl" name="material-symbols:favorite-outline"/>
+                    </button>
+                    <button @click="copyUrl(`/catalog/flat-${flat.flats.id}`)" class="p-2 flex items-center justify-center rounded-full bg-gray-200 text-[#12B1DE]">
+                        <Icon class="text-2xl" name="material-symbols:share"/>
+                    </button>
+                </div>
+            </div>
+            <div class="w-full h-px bg-gray-300"></div>
+        </div>
+    </div>  
 </template>
 
 <script setup>
@@ -186,6 +243,44 @@
             showMessage("Произошла ошибка!", false)   
         } else {            
             showMessage("Данные успешно загружены!", true)   
+        }
+    }
+
+
+    /* избранное */
+
+    /* получение адреса и его копирование */
+    const fullUrl = computed(() => {
+        const { protocol, host } = window.location
+        return `${protocol}//${host}`
+    })
+
+    const copyUrl = async (link) => {
+        await navigator.clipboard.writeText(`${fullUrl.value}${link}`)
+        return showMessage("Скопировано!", true)
+    }
+
+
+    /* добавление в избранное */
+    const { data: favourites, error:favouritesError } = await supabase
+    .from('favourites')
+    .select('*, flats(*), users(*)')
+    .eq('userId', id.value)
+
+    const favouritesFlats = ref(favourites)
+
+    const removeFavourite = async (flatId, arrayId) => {
+        const { error } = await supabase
+        .from('favourites')
+        .delete()
+        .eq('id', flatId)
+
+        if(error) {
+            console.log(error)
+            showMessage("Произошла ошибка!", false)   
+        } else {            
+            showMessage("Удаленно из избранного!", true)   
+            favouritesFlats.value.splice(arrayId, 1)
         }
     }
 </script>
