@@ -186,7 +186,7 @@
         }
 
         if (images.length > 0 && user.value.avatar) {
-            const { data, error } = await supabase.storage.from('users').remove([user.value.avatar])
+            await supabase.storage.from('users').remove([user.value.avatar])
         }
 
         const { data, error } = await supabase
