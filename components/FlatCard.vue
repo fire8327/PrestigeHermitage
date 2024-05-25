@@ -43,7 +43,7 @@
                 </div>
             </NuxtLink>
             <div class="flex items-center gap-2 self-end absolute z-[2] top-8 right-8 xl:right-4 xl:top-4">
-                <button @click="toggleFavourite()" class="p-2 flex items-center justify-center rounded-full bg-gray-200 transition-all duration-500" :class="checkFavourite ? 'text-red-500' : 'text-gray-600'">
+                <button v-if="authenticated" @click="toggleFavourite()" class="p-2 flex items-center justify-center rounded-full bg-gray-200 transition-all duration-500" :class="checkFavourite ? 'text-red-500' : 'text-gray-600'">
                     <Icon class="text-2xl" name="material-symbols:favorite-outline"/>
                 </button>
                 <button @click="copyUrl(`/catalog/flat-${props.id}`)" class="p-2 flex items-center justify-center rounded-full bg-gray-200 text-[#12B1DE]">
@@ -73,6 +73,10 @@
         images: Array,
         users: Object
     })
+
+
+    /* проверка входа */
+    const { authenticated } = storeToRefs(useUserStore())
 
 
     /* создание сообщений */
