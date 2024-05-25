@@ -60,7 +60,7 @@
                         <Icon class="text-3xl text-red-500" name="material-symbols:delete-rounded"/>
                     </button>
                 </div>
-                <p class="text-xl font-semibold font-Nunito tracking-widest">{{ flat.rooms }}-комн. квартира, {{ flat.totalArea }} м², {{ flat.floorNumber }}/{{ flat.floorQuantity }} этаж</p>
+                <p class="text-xl font-semibold font-Nunito tracking-widest">{{ flat.type }}, {{ flat.rooms }}-комн., {{ flat.totalArea }} м², {{ flat.floorNumber }}/{{ flat.floorQuantity }} этаж</p>
                 <p class="text-gray-400">ID {{ flat.id }}</p>
                 <img :src="`https://odsofactmcvehjzaoqqk.supabase.co/storage/v1/object/public/flats/${flat.images[0]}`" alt="" class="rounded-xl aspect-video object-cover">
             </div>
@@ -73,7 +73,7 @@
                 <NuxtLink :to="`/catalog/flat-${flat.flats.id}`" class="grid grid-cols-5 gap-6 p-4 rounded-xl transition-all duration-500 hover:bg-white hover:shadow-[0px_0px_13px_-7px_black] w-full">
                     <img :src="`https://odsofactmcvehjzaoqqk.supabase.co/storage/v1/object/public/flats/${flat.flats.images[0]}`" alt="" class="col-span-5 xl:col-span-2 rounded-xl w-full aspect-video object-cover">
                     <div class="flex flex-col gap-4 col-span-5 md:col-span-3 xl:col-span-2">
-                        <p class="text-xl font-semibold font-Nunito tracking-widest">{{ flat.flats.rooms }}-комн. квартира, {{ flat.flats.totalArea }} м², {{ flat.flats.floorNumber }}/{{ flat.flats.floorQuantity }} этаж</p>
+                        <p class="text-xl font-semibold font-Nunito tracking-widest">{{ flat.flats.type }}, {{ flat.flats.rooms }}-комн., {{ flat.flats.totalArea }} м², {{ flat.flats.floorNumber }}/{{ flat.flats.floorQuantity }} этаж</p>
                         <p class="text-gray-500 text-sm">{{ flat.flats.address }}</p>
                         <p class="text-2xl">{{ flat.flats.price.toLocaleString() }} ₽/мес.</p>
                         <div class="flex flex-col gap-2 w-full text-base">

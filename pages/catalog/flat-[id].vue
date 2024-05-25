@@ -5,7 +5,7 @@
                 <span class="font-semibold font-Nunito tracking-widest">Каталог</span>
                 <Icon class="text-3xl" name="ri:arrow-go-back-fill"/>
             </NuxtLink>
-            <p class="text-2xl font-semibold font-Nunito tracking-widest"><span v-html="flats[0].dealType == 'Аренда' ? 'Сдаётся' : 'Продаётся'"></span> {{ flats[0].rooms }}-комн. квартира, {{ flats[0].totalArea }}м²</p>
+            <p class="text-2xl font-semibold font-Nunito tracking-widest"><span v-html="flats[0].dealType == 'Аренда' ? 'Сдаётся' : 'Продаётся'"></span> {{ flats[0].type }}, {{ flats[0].rooms }}-комн., {{ flats[0].totalArea }}м²</p>
             <p class="text-sm text-gray-400">{{ flats[0].address }}</p>
             <Swiper :space-between="20" :loop="true" :modules="[SwiperAutoplay, SwiperPagination]" :autoplay="{delay: 3500}" :pagination="{clickable: true}" :slidesPerView="1" class="w-full">
                 <SwiperSlide class="w-full" v-for="image in flats[0].images">
