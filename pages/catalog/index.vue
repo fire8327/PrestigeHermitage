@@ -39,6 +39,13 @@
 </template>
 
 <script setup>
+    /* название страницы */
+    useSeoMeta({
+        title: 'Каталог недвижимости',
+        lang: 'ru'
+    })
+
+
     /* подключение БД */
     const supabase = useSupabaseClient() 
 

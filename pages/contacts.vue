@@ -41,5 +41,9 @@
 </template>
 
 <script setup>
-
+    /* название страницы */
+    useSeoMeta({
+        title: 'Контакты',
+        lang: 'ru'
+    })
 </script>

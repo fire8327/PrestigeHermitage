@@ -40,6 +40,13 @@
 </template>
 
 <script setup>
+    /* название страницы */
+    useSeoMeta({
+        title: 'Услуги',
+        lang: 'ru'
+    })
+
+
     /* калькулятор ипотеки */
     const mortgageForm = ref({
         price: null,

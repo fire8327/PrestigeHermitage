@@ -8,6 +8,13 @@
 </template>
 
 <script setup>
+    /* название страницы */
+    useSeoMeta({
+        title: 'FAQ',
+        lang: 'ru'
+    })
+
+
     /* передача данных */
     const FAQs = [
         {

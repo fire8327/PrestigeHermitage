@@ -222,5 +222,9 @@
 </template>
 
 <script setup>
-
+    /* название страницы */
+    useSeoMeta({
+        title: 'Главная',
+        lang: 'ru'
+    })
 </script>

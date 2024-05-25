@@ -130,6 +130,13 @@
 </template>
 
 <script setup>
+    /* название страницы */
+    useSeoMeta({
+        title: 'Личный кабинет',
+        lang: 'ru'
+    })
+
+
     /* подключение БД и проверка пользователя */
     const supabase = useSupabaseClient() 
     const { authenticated, role, id } = storeToRefs(useUserStore())

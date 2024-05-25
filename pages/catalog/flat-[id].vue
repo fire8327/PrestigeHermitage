@@ -112,6 +112,13 @@
     .eq('id', id)
 
 
+    /* название страницы */
+    useSeoMeta({
+        title: `Квартира ${id}`,
+        lang: 'ru'
+    })
+
+
     /* показ номера телефона */
     const isPhoneShow = ref(false)
 

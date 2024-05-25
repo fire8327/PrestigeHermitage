@@ -25,5 +25,9 @@
 </template>
 
 <script setup>
-
+    /* название страницы */
+    useSeoMeta({
+        title: 'О компании',
+        lang: 'ru'
+    })
 </script>

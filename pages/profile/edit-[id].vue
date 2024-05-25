@@ -32,6 +32,13 @@
 </template>
 
 <script setup>
+    /* название страницы */
+    useSeoMeta({
+        title: 'Редактирование недвижимости',
+        lang: 'ru'
+    })
+
+
     /* подключение БД */
     const supabase = useSupabaseClient() 
     const { id } = useRoute().params

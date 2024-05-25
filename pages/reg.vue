@@ -23,6 +23,13 @@
 </template>
 
 <script setup>
+    /* название страницы */
+    useSeoMeta({
+        title: 'Регистрация',
+        lang: 'ru'
+    })
+
+
     /* создание пользователя */
     const user = ref({
         name: "",

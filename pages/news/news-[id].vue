@@ -26,6 +26,13 @@
     .eq('id', id) 
 
 
+    /* название страницы */
+    useSeoMeta({
+        title: `Новость ${id}`,
+        lang: 'ru'
+    })
+
+
     /* создание сообщений */
     const { showMessage } = useMessagesStore()
 
