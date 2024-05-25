@@ -51,11 +51,11 @@
                     </div> -->
                 </div>
             </NuxtLink>
-            <div class="flex items-center gap-2 self-end text-[#12B1DE] absolute z-[2] top-8 right-8 xl:right-4 xl:top-4">
-                <button class="p-2 flex items-center justify-center rounded-full bg-gray-200">
+            <div class="flex items-center gap-2 self-end absolute z-[2] top-8 right-8 xl:right-4 xl:top-4">
+                <button @click="toggleFavourite()" class="p-2 flex items-center justify-center rounded-full bg-gray-200 transition-all duration-500" :class="checkFavourite ? 'text-red-500' : 'text-gray-600'">
                     <Icon class="text-2xl" name="material-symbols:favorite-outline"/>
                 </button>
-                <button @click="copyUrl(`/catalog/flat-${props.id}`)" class="p-2 flex items-center justify-center rounded-full bg-gray-200">
+                <button @click="copyUrl(`/catalog/flat-${props.id}`)" class="p-2 flex items-center justify-center rounded-full bg-gray-200 text-[#12B1DE]">
                     <Icon class="text-2xl" name="material-symbols:share"/>
                 </button>
             </div>
@@ -100,5 +100,50 @@
     const copyUrl = async (link) => {
         await navigator.clipboard.writeText(`${fullUrl.value}${link}`)
         return showMessage("Скопировано!", true)
+    }
+
+
+    /* добавление в избранное */
+    const supabase = useSupabaseClient() 
+    const { data: favourites, error } = await supabase
+    .from('favourites')
+    .select('*')
+    .eq('flatId', props.id)
+    .eq('userId', props.users.id)
+
+    const checkFavourite = ref(false)
+
+    if (favourites && favourites.length>0) {
+        checkFavourite.value = true
+    }
+
+    const toggleFavourite = async () => {
+        if (checkFavourite.value) {
+            const { error } = await supabase
+            .from('favourites')
+            .delete()
+            .eq('flatId', props.id)
+            .eq('userId', props.users.id)
+
+            if(error) {
+                console.log(error)
+                showMessage("Произошла ошибка!", false)   
+            } else {            
+                showMessage("Удаленно из избранного!", true)   
+                checkFavourite.value = false
+            }
+        } else {
+            const { error } = await supabase
+            .from('favourites')
+            .insert({ userId: props.users.id, flatId: props.id })
+
+            if(error) {
+                console.log(error)
+                showMessage("Произошла ошибка!", false)   
+            } else {            
+                showMessage("Добавлено в избранное!", true)  
+                checkFavourite.value = true 
+            }
+        }
     }
 </script>
