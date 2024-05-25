@@ -22,7 +22,7 @@
         </FormKit>
     </div>
     <div class="flex flex-col gap-6">
-        <p class="text-2xl font-semibold font-Nunito tracking-widest">Добавление апартаментов</p>
+        <p class="text-2xl font-semibold font-Nunito tracking-widest">Добавление недвижимости</p>
         <FormKit @submit="addFlat" type="form" :actions="false" messages-class="hidden" form-class="flex flex-col gap-4 items-center justify-center">
             <FormKit v-model="flat.address" type="text" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Адрес" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Адрес"/>
             <div class="flex items-center lg:items-start gap-4 max-lg:flex-col md:w-2/3 lg:w-1/2">
