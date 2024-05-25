@@ -43,6 +43,7 @@
                 <FormKit v-model="flat.prepayment" type="select" :options="['1 месяц', '2 месяца', '3 месяца', '4 месяца', '5 месяцев']" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Предоплата" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Предоплата"/>
                 <FormKit v-model="flat.rentalPeriod" type="select" :options="['Несколько месяцев', 'От года', 'Более года']" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Срок аренды" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Срок аренды"/>
             </div>
+            <FormKit v-model="flat.dealType" type="select" :options="['Продажа', 'Аренда']" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Тип сделки" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Тип сделки"/>
             <FormKit @change="uploadFlatImages" type="file" multiple="true" accept=".png,.jpg,.jpeg,.svg,.webp,.bmp" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Фото" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Фото"/>
             <button type="submit" class="w-[160px] text-center py-0.5 px-4 rounded-full bg-[#12B1DE] border border-[#12B1DE] text-white transition-all duration-500 hover:text-[#12B1DE] hover:bg-transparent">Добавить</button>
         </FormKit>
@@ -198,7 +199,8 @@
         rooms: "",
         HCS: "",
         prepayment: "",
-        rentalPeriod: ""
+        rentalPeriod: "",
+        dealType: ""
     }) 
 
     const flatFiles = ref([])
@@ -221,6 +223,7 @@
             HCS: flat.value.HCS,
             prepayment: flat.value.prepayment,
             rentalPeriod: flat.value.rentalPeriod,
+            dealType: flat.value.dealType,
             userId: id.value,
             images: []
         }
