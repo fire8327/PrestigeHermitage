@@ -6,8 +6,8 @@
                 <div class="flex flex-col gap-4 col-span-5 md:col-span-3 xl:col-span-2">
                     <p class="text-xl font-semibold font-Nunito tracking-widest">{{ props.rooms }}-комн. квартира, {{ props.totalArea }} м², {{ props.floorNumber }}/{{ props.floorQuantity }} этаж</p>
                     <p class="text-gray-500 text-sm">{{ props.address }}</p>
-                    <p class="text-2xl">{{ props.price.toLocaleString() }} ₽/мес.</p>
-                    <div class="flex flex-col gap-2 w-full text-base">
+                    <p class="text-2xl">{{ props.price.toLocaleString() }} <span v-html="props.dealType == 'Аренда' ? '₽/мес.' : '₽'"></span></p>
+                    <div class="flex flex-col gap-2 w-full text-base" v-if="props.dealType == 'Аренда'">
                         <div class="flex items-center gap-2">
                             <p>Оплата ЖКХ</p>
                             <div class="border-b border-dotted border-gray-400 grow h-px"></div>
@@ -69,6 +69,7 @@
         prepayment: String,
         rentalPeriod: String,
         desc: String,
+        dealType: String,
         images: Array,
         users: Object
     })

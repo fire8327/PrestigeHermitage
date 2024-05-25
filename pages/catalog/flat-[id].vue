@@ -5,7 +5,7 @@
                 <span class="font-semibold font-Nunito tracking-widest">Каталог</span>
                 <Icon class="text-3xl" name="ri:arrow-go-back-fill"/>
             </NuxtLink>
-            <p class="text-2xl font-semibold font-Nunito tracking-widest">Сдаётся {{ flats[0].rooms }}-комн. квартира, {{ flats[0].totalArea }}м²</p>
+            <p class="text-2xl font-semibold font-Nunito tracking-widest"><span v-html="flats[0].dealType == 'Аренда' ? 'Сдаётся' : 'Продаётся'"></span> {{ flats[0].rooms }}-комн. квартира, {{ flats[0].totalArea }}м²</p>
             <p class="text-sm text-gray-400">{{ flats[0].address }}</p>
             <Swiper :space-between="20" :loop="true" :modules="[SwiperAutoplay, SwiperPagination]" :autoplay="{delay: 3500}" :pagination="{clickable: true}" :slidesPerView="1" class="w-full">
                 <SwiperSlide class="w-full" v-for="image in flats[0].images">
@@ -54,8 +54,8 @@
                 </button>
             </div>
             <div class="flex flex-col w-full gap-6 rounded-xl bg-white shadow-[0px_0px_13px_-7px_black] p-4">
-                <p class="text-2xl font-semibold font-Nunito tracking-widest">{{ flats[0].price.toLocaleString() }} ₽/мес.</p>
-                <div class="flex flex-col gap-2 w-full text-base">
+                <p class="text-2xl font-semibold font-Nunito tracking-widest">{{ flats[0].price.toLocaleString() }} <span v-html="flats[0].dealType == 'Аренда' ? '₽/мес.' : '₽'"></span></p>
+                <div class="flex flex-col gap-2 w-full text-base" v-if="flats[0].dealType == 'Аренда'">
                     <div class="flex items-center gap-2">
                         <p>Оплата ЖКХ</p>
                         <div class="border-b border-dotted border-gray-400 grow h-px"></div>
