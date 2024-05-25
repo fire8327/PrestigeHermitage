@@ -34,8 +34,8 @@
                 <FormKit v-model="flat.floorNumber" type="text" validation="required|number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Этаж" outer-class="w-full lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Этаж"/>
                 <FormKit v-model="flat.floorQuantity" type="text" validation="required|number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Этажей в доме" outer-class="w-full lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Этажей в доме"/>
             </div>
-            <FormKit v-model="flat.price" type="text" validation="required|number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Аренда" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Аренда (₽/мес.)"/>
-            <FormKit v-model="flat.desc" type="textarea" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Описание"/>
+            <FormKit v-model="flat.price" type="text" validation="required|number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Стоимость/Аренда" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Стоимость/Аренда"/>
+            <FormKit v-model="flat.desc" type="textarea" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Описание" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Описание"/>
             <FormKit v-model="flat.type" type="select" :options="['Квартира', 'Дом/Дача' , 'Коттедж', 'Таунхаус']" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Тип объекта" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Тип объекта"/>
             <FormKit v-model="flat.rooms" type="radio" :options="['1' , '2', '3', '4', '5', '6+']" validation="required" inner-class="hidden" options-class="flex items-center gap-4 flex-wrap mt-4" wrapper-class="block px-4 py-2 border border-[#12B1DE] rounded-xl transition-all duration-500 has-[:checked]:bg-[#12B1DE] has-[:checked]:text-white cursor-pointer" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Количество комнат" outer-class="w-full md:w-2/3 lg:w-1/2" label="Количество комнат"/>
             <FormKit v-model="flat.HCS" type="select" :options="['Включена', 'Отдельно']" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Оплата ЖКХ" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Оплата ЖКХ"/>
@@ -47,6 +47,24 @@
             <FormKit @change="uploadFlatImages" type="file" multiple="true" accept=".png,.jpg,.jpeg,.svg,.webp,.bmp" validation="required" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Фото" outer-class="w-full md:w-2/3 lg:w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Фото"/>
             <button type="submit" class="w-[160px] text-center py-0.5 px-4 rounded-full bg-[#12B1DE] border border-[#12B1DE] text-white transition-all duration-500 hover:text-[#12B1DE] hover:bg-transparent">Добавить</button>
         </FormKit>
+    </div>
+    <div class="flex flex-col gap-6" v-if="flatsArray && flatsArray.length>0">
+        <p class="text-2xl font-semibold font-Nunito tracking-widest">Управление недвижимостью</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-6">
+            <div class="flex flex-col gap-4 p-4 border border-[#12B1DE] rounded-xl" v-for="flat in flatsArray">
+                <div class="flex items-center gap-4 self-end">
+                    <NuxtLink :to="`/profile/edit-${flat.id}`">
+                        <Icon class="text-3xl text-amber-500" name="material-symbols:edit-outline"/>
+                    </NuxtLink>
+                    <button @click="deleteFlat(flat.id, flatsArray.indexOf(flat))">
+                        <Icon class="text-3xl text-red-500" name="material-symbols:delete-rounded"/>
+                    </button>
+                </div>
+                <p class="text-xl font-semibold font-Nunito tracking-widest">{{ flat.rooms }}-комн. квартира, {{ flat.totalArea }} м², {{ flat.floorNumber }}/{{ flat.floorQuantity }} этаж</p>
+                <p class="text-gray-400">ID {{ flat.id }}</p>
+                <img :src="`https://odsofactmcvehjzaoqqk.supabase.co/storage/v1/object/public/flats/${flat.images[0]}`" alt="" class="rounded-xl aspect-video object-cover">
+            </div>
+        </div>
     </div>
     <div class="flex flex-col gap-6" v-if="favouritesFlats && favouritesFlats.length>0">
         <p class="text-2xl font-semibold font-Nunito tracking-widest">Избранная недвижимость</p>
@@ -185,6 +203,30 @@
     }
 
 
+    /* управление недвижимостью */
+    const { data:flats, error:flatsError } = await supabase
+    .from('flats')
+    .select('*')   
+    .eq('userId', id.value)  
+
+    const flatsArray = ref(flats)
+
+    const deleteFlat = async (flatId, arrayId) => {
+        const { error } = await supabase
+        .from('flats')
+        .delete()
+        .eq('id', flatId)
+
+        if(error) {
+            console.log(error)
+            showMessage("Произошла ошибка!", false)   
+        } else {            
+            showMessage("Удалено!", true)   
+            flatsArray.value.splice(arrayId, 1)
+        }
+    }
+
+
     /* добавление квартиры */
     const flat = ref({
         address: "",
@@ -240,6 +282,8 @@
         .from('flats')
         .insert(insertFlat)
         .select()
+
+        flatsArray.value.push(insertFlat)
            
         if(error) {
             console.log(error)
@@ -249,8 +293,6 @@
         }
     }
 
-
-    /* избранное */
 
     /* получение адреса и его копирование */
     const fullUrl = computed(() => {

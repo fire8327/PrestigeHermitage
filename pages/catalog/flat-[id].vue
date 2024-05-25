@@ -157,7 +157,7 @@
                 console.log(error)
                 showMessage("Произошла ошибка!", false)   
             } else {            
-                showMessage("Удаленно из избранного!", true)   
+                showMessage("Удалено из избранного!", true)   
                 checkFavourite.value = false
             }
         } else {
