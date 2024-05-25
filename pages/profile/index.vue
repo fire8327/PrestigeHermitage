@@ -123,6 +123,10 @@
             <div class="w-full h-px bg-gray-300"></div>
         </div>
     </div>  
+    <div class="flex flex-col gap-6">
+        <p class="text-2xl font-semibold font-Nunito tracking-widest">Выход из аккаунта</p>
+        <button @click="logout" class="px-4 py-2 w-fit rounded-xl border border-[#12B1DE] text-white bg-[#12B1DE] transition-all duration-500 hover:bg-transparent hover:text-[#12B1DE]">Выйти</button>
+    </div>
 </template>
 
 <script setup>
@@ -327,5 +331,14 @@
             showMessage("Удаленно из избранного!", true)   
             favouritesFlats.value.splice(arrayId, 1)
         }
+    }
+
+
+    /* выход из аккаунта */
+    const logout = () => {
+        authenticated.value = false
+        role.value = null
+        showMessage("Успешный выход!", true)   
+        router.push('/')
     }
 </script>
