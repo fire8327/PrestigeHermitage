@@ -6,7 +6,7 @@
                 <div class="flex flex-col gap-4 col-span-5 md:col-span-3 xl:col-span-2">
                     <p class="text-xl font-semibold font-Nunito tracking-widest">{{ props.rooms }}-комн. квартира, {{ props.totalArea }} м², {{ props.floorNumber }}/{{ props.floorQuantity }} этаж</p>
                     <p class="text-gray-500 text-sm">{{ props.address }}</p>
-                    <p class="text-2xl">25 000 ₽/мес.</p>
+                    <p class="text-2xl">{{ props.price.toLocaleString() }} ₽/мес.</p>
                     <div class="flex flex-col gap-2 w-full text-base">
                         <div class="flex items-center gap-2">
                             <p>Оплата ЖКХ</p>
