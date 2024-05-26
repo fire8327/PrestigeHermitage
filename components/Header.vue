@@ -11,7 +11,7 @@
                     <img src="/images/header/logo.png" alt="" class="w-40">
                 </NuxtLink>
                 <nav class="flex items-center gap-6 text-lg transition-all duration-500 max-lg:flex-col max-lg:absolute max-lg:w-full max-lg:left-0 max-lg:bg-white max-lg:py-6 max-lg:rounded-b-3xl z-[4]" :class="isMenuShow ? 'max-lg:top-full' : 'max-lg:top-0 max-lg:-translate-y-full'">
-                    <NuxtLink to="/catalog" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Поис квартир</NuxtLink>
+                    <NuxtLink to="/catalog" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Поиск квартир</NuxtLink>
                     <NuxtLink to="/news" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Новости</NuxtLink>
                     <NuxtLink to="/services" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">Услуги</NuxtLink>
                     <NuxtLink to="/FAQ" class="flex flex-col after:w-0 after:h-px after:bg-[#292929] after:transition-all after:duration-500 hover:after:w-full">FAQ</NuxtLink>
