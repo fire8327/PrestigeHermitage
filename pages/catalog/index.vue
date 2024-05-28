@@ -1,39 +1,41 @@
 <template>
     <div class="flex flex-col gap-6">
         <p class="text-2xl font-semibold font-Nunito tracking-widest">Каталог недвижимости</p>
-        <div class="flex max-lg:flex-col items-center lg:items-end lg:justify-between gap-6">
-            <div class="flex gap-4 max-lg:flex-col max-lg:w-full">
-                <div class="flex flex-col lg:w-2/5">
+        <FormKit type="form" :actions="false" form-class="flex flex-col items-center gap-6">
+            <div class="grid grid-cols-1 gap-4 md:grid-cols-3 xl:grid-cols-7">
+                <div class="flex flex-col xl:col-span-2">
                     <p class="text-sm text-gray-400">Цена</p>
-                    <div class="flex items-center gap-2">
-                        <input v-model="filters.minPrice" placeholder="От" type="text" class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-1/2">
-                        <input v-model="filters.maxPrice" placeholder="До" type="text" class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-1/2">
+                    <div class="flex items-start gap-2">
+                        <FormKit type="text" v-model="filters.minPrice" validation="number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="От" outer-class="w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="От"/>
+                        <FormKit type="text" v-model="filters.maxPrice" validation="number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="До" outer-class="w-1/2" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="До"/>
                     </div>
                 </div>
-                <div class="flex flex-col lg:w-1/5">
+                <div class="flex flex-col">
                     <p class="text-sm text-gray-400">Тип недвижимости</p>
-                    <select v-model="filters.type" class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none">
-                        <option :value="type" v-for="type in inputTypes">{{ type }}</option>
-                    </select>
+                    <FormKit type="select" :options="inputTypes" v-model="filters.type" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Тип недвжимости" outer-class="w-full" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Тип недвжимости"/>
                 </div>
-                <div class="flex flex-col lg:w-1/5">
+                <div class="flex flex-col">
                     <p class="text-sm text-gray-400">Комнатность</p>
-                    <select v-model="filters.rooms" class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none">
-                        <option :value="rooms" v-for="rooms in inputRooms">{{ rooms }}</option>
-                    </select>
+                    <FormKit type="select" :options="inputRooms" v-model="filters.rooms" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Комнатность" outer-class="w-full" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Комнатность"/>
                 </div>
-                <div class="flex flex-col lg:w-1/5">
+                <div class="flex flex-col">
                     <p class="text-sm text-gray-400">Тип сделки</p>
-                    <select v-model="filters.dealType" class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none">
-                        <option :value="dealType" v-for="dealType in inputDealTypes">{{ dealType }}</option>
-                    </select>
+                    <FormKit type="select" :options="inputDealTypes" v-model="filters.dealType" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Тип сделки" outer-class="w-full" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Тип сделки"/>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-400">Минимальная площадь</p>
+                    <FormKit type="text" v-model="filters.square" validation="number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Мин. площадь" outer-class="w-full" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Мин. площадь"/>
+                </div>
+                <div class="flex flex-col">
+                    <p class="text-sm text-gray-400">Этаж</p>
+                    <FormKit type="text" v-model="filters.floorNumber" validation="number" messages-class="text-[#E9556D] font-semibold font-Nunito tracking-widest" name="Этаж" outer-class="w-full" input-class="px-4 py-2 border border-[#12B1DE] rounded-xl focus:outline-none w-full" placeholder="Этаж"/>
                 </div>
             </div>
             <div class="flex items-center gap-2">
-                <button @click="filterProducts" class="px-4 py-2 w-fit h-fit rounded-xl border border-[#12B1DE] text-white bg-[#12B1DE] transition-all duration-500 hover:bg-transparent hover:text-[#12B1DE]">Применить</button>
-                <button @click="cancelFilters" class="px-4 py-2 w-fit h-fit rounded-xl border border-[#12B1DE] hover:text-white hover:bg-[#12B1DE] transition-all duration-500 bg-transparent text-[#12B1DE]">Отменить</button>                
+                <button type="button" @click="filterProducts" class="px-4 py-2 w-fit h-fit rounded-xl border border-[#12B1DE] text-white bg-[#12B1DE] transition-all duration-500 hover:bg-transparent hover:text-[#12B1DE]">Применить</button>
+                <button type="button" @click="cancelFilters" class="px-4 py-2 w-fit h-fit rounded-xl border border-[#12B1DE] hover:text-white hover:bg-[#12B1DE] transition-all duration-500 bg-transparent text-[#12B1DE]">Отменить</button>                
             </div>
-        </div>
+        </FormKit>
         <FlatCard v-for="flat in flats" v-bind="flat"></FlatCard>
     </div>
 </template>
@@ -74,6 +76,8 @@
     const filters = ref({
         minPrice: null,
         maxPrice: null,
+        square: null,
+        floorNumber: null,
         type: "Все",
         dealType: "Все",
         rooms: "Все"
@@ -85,6 +89,8 @@
             if ((filters.value.type != 'Все' && el.type != filters.value.type) ||
                 (filters.value.dealType != 'Все' && el.dealType != filters.value.dealType) ||
                 (filters.value.rooms != 'Все' && el.rooms != filters.value.rooms) ||
+                (filters.value.square && el.totalArea < filters.value.square) ||
+                (filters.value.floorNumber && el.floorNumber != filters.value.floorNumber) ||
                 (filters.value.minPrice && el.price < filters.value.minPrice) ||
                 (filters.value.maxPrice && el.price > filters.value.maxPrice)) {
                 return false
@@ -98,6 +104,8 @@
         flats.value = data
         filters.value.minPrice = null
         filters.value.maxPrice = null
+        filters.value.square = null
+        filters.value.floorNumber = null
         filters.value.type = "Все"
         filters.value.dealType = "Все"
         filters.value.rooms = "Все"
