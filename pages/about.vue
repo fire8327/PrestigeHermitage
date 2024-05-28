@@ -22,6 +22,7 @@
         </div>
     </div>
     <OurTeam></OurTeam>
+    <Reviews></Reviews>
 </template>
 
 <script setup>
